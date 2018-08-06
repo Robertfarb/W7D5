@@ -29,7 +29,7 @@ class SessionForm extends React.Component {
       <div>
         <form onSubmit={this.handleSubmit}>
           Please {this.props.formType} or {this.props.navLink}
-          // {this.renderErrors()}
+
           <label>Username:
             <input
               value={this.state.username}
@@ -42,7 +42,7 @@ class SessionForm extends React.Component {
                 onChange={this.update('password')}
                 type="password"/>
           </label>
-          <input type="submit">{this.props.formType}</input>
+          <input type="submit" value={this.props.formType}></input>
         </form>
       </div>
     );
