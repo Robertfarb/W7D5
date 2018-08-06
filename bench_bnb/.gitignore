@@ -15,6 +15,9 @@
 
 /node_modules
 /yarn-error.log
+<<<<<<< HEAD
 package.json
+=======
+>>>>>>> cd345a2d84721a81ecb48048d0bdfef7cf361d71
 
 .byebug_history
