@@ -187,10 +187,24 @@ var _session_actions = __webpack_require__(/*! ./actions/session_actions */ "./f
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 document.addEventListener("DOMContentLoaded", function () {
   window.login = _session_actions.login;
 
   var store = (0, _store2.default)();
+  if (window.currentUser) {
+    var preloadedState = {
+      entities: {
+        user: _defineProperty({}, window.currentUser.id, window.currentUser)
+      },
+      session: { id: window.currentUser.id }
+    };
+    store = (0, _store2.default)(preloadedState);
+    delete window.currentUser;
+  } else {
+    store = (0, _store2.default)();
+  }
 
   //testing
   window.getState = store.getState;
