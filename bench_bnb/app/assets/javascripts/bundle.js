@@ -591,6 +591,8 @@ var _session_form = __webpack_require__(/*! ./session_form */ "./frontend/compon
 
 var _session_form2 = _interopRequireDefault(_session_form);
 
+var _session_actions = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mapStateToProps = function mapStateToProps(state) {
@@ -602,9 +604,9 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
   return {
-    processForm: dispatch(function (user) {
-      return ownProps.signup(user);
-    })
+    processForm: function processForm(user) {
+      return dispatch((0, _session_actions.signup)(user));
+    }
   };
 };
 
