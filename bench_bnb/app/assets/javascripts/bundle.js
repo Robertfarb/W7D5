@@ -248,6 +248,10 @@ var _signup_form_container2 = _interopRequireDefault(_signup_form_container);
 
 var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 
+var _route_util = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
+
+var _route_util2 = _interopRequireDefault(_route_util);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var App = function App() {
@@ -27200,6 +27204,49 @@ var configureStore = function configureStore() {
 };
 
 exports.default = configureStore;
+
+/***/ }),
+
+/***/ "./frontend/util/route_util.jsx":
+/*!**************************************!*\
+  !*** ./frontend/util/route_util.jsx ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.AuthRoute = undefined;
+
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./frontend/node_modules/react-redux/es/index.js");
+
+var _react = __webpack_require__(/*! react */ "./frontend/node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Auth = function Auth(_ref) {
+  var Component = _ref.component,
+      path = _ref.path,
+      loggedIn = _ref.loggedIn,
+      exact = _ref.exact;
+  return _react2.default.createElement(_reactRouterDom.Route, { path: path, exact: exact, render: function render(props) {
+      return !loggedIn ? _react2.default.createElement(Component, props) : _react2.default.createElement(_reactRouterDom.Redirect, { to: '/' });
+    } });
+};
+
+var mapStateToProps = function mapStateToProps(state) {
+  return { loggedIn: Boolean(state.session.id) };
+};
+
+var AuthRoute = exports.AuthRoute = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, null)(Auth));
 
 /***/ }),
 
